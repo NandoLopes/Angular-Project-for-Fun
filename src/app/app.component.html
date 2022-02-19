@@ -1,0 +1,70 @@
+<form [formGroup]="registerForm">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+        placeholder="Insert your name"
+      />
+    </div>
+    <br />
+    <div class="form-group col-md-12">
+      <label>Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+        placeholder="Insert your last name"
+      />
+    </div>
+    <br />
+    <div class="form-group col-md-12">
+      <label>Age</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="age"
+        placeholder="Insert your age"
+      />
+    </div>
+
+    <br />
+  </div>
+</form>
+
+<button class="btn btn-success ml-auto" (click)="addPerson()">
+  Add Person
+</button>
+<button class="btn btn-danger mr-auto" (click)="cleanForm()">Clean Form</button>
+<br />
+<br />
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th colspan="1">Options</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="listPeople && listPeople.length">
+    <tr *ngFor="let person of listPeople">
+      <td>{{ person.firstName }}</td>
+      <td>{{ person.lastName }}</td>
+      <td>{{ person.age }}</td>
+      <td>
+        <div class="btn-group">
+          <button
+            class="btn btn-sm btn-danger"
+            tooltip="Excluir"
+            (click)="deletePerson(person)"
+          >
+            Delete Person
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
